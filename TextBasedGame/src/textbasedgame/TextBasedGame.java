@@ -15,7 +15,7 @@ public class TextBasedGame {
         
         GameController g = new GameController();
         
-        g.run();
+        g.runGame();
     }
     
 }

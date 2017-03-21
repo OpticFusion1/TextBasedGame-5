@@ -13,11 +13,6 @@ import java.util.Scanner;
  */
 public class GameController {
     
-    // initialize room method
-    
-    
-    // modulator method with inputs for setRoom, set
-    
     public void run(){
         Scanner userInput = new Scanner(System.in);
         // initalise room

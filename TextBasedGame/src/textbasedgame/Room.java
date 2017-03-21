@@ -10,32 +10,99 @@ package textbasedgame;
  * @author Zack
  */
 public class Room {
-     private int roomNr;
-     private String roomDescription;
-     private int goldAmount;
+    int currentRoom;
+    Room west;
+    Room east;
+    Room north;
+    Room south;
+    boolean locked;
 
-    public int getRoomNr() {
-        return roomNr;
+    // initalize each room with the room to its left, right, up and down from current room, as well as if room is locked
+    public Room(int currentRoom) {
+       this.currentRoom = currentRoom;
+        
     }
 
-    public void setRoomNr(int roomNr) {
-        this.roomNr = roomNr;
+    public int getCurrentRoom() {
+        return currentRoom;
     }
 
-    public String getRoomDescription() {
-        return roomDescription;
-    }
-
-    public void setRoomDescription(String roomDescription) {
-        this.roomDescription = roomDescription;
+    public void setCurrentRoom(int currentRoom) {
+        this.currentRoom = currentRoom;
     }
     
-    public void setGoldAmount(int goldAmount){
-        this.goldAmount = goldAmount;
+    
+    public boolean roomIsLocked(){
+        return locked;
     }
     
-    public int getGoldAmount(){
-        return goldAmount;
+    // boolean check method whether there is room to its left, right, up and down
+    
+    public boolean canMoveWest(){
+        if(getWest() != null){
+            return true;
+        }
+        return false;
     }
+    
+    public boolean canMoveEast(){
+        if(getEast() != null){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean canMoveNorth(){
+        if(getNorth() != null){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean canMoveSouth(){
+        if(getSouth() != null){
+            return true;
+        }
+        return false;
+    }
+    
+    // call method to get the room of the player depending on where he wants to go
+    public Room getWest(){
+        return west;
+    }
+    
+    public Room getEast(){
+        return east;
+    }
+    
+    public Room getNorth() {
+        return north;
+    }
+    
+    public Room getSouth(){
+        return south;
+    }
+    
+    public void setWest(Room west) {
+        this.west = west;
+    }
+
+    public void setEast(Room east) {
+        this.east = east;
+    }
+
+    public void setNorth(Room north) {
+        this.north = north;
+    }
+
+    public void setSouth(Room south) {
+        this.south = south;
+    }
+
+    
+    
+    
+    
+    
      
 }

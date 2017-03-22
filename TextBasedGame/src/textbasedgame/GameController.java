@@ -29,13 +29,17 @@ public class GameController {
         roomMatrix[2][2] = new Room(9);
         
         // initalise position for each room
+        
+        // DOOR 1
         roomMatrix[0][0].setNorth(roomMatrix[2][2]);
         roomMatrix[0][0].setEast(roomMatrix[0][1]);
         
-        r2.setNorth(r3);
-        r2.setWest(r1);
+        // DOOR 2
+        roomMatrix[0][1].setNorth(roomMatrix[0][2]);
+        roomMatrix[0][1].setWest(roomMatrix[0][0]);
         
-        r3.setWest(r4);
+        // DOOR 3
+        roomMatrix[0][2].setWest(r4);
         r3.setSouth(r2);
         
         r4.setEast(r3);

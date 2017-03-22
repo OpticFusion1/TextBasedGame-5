@@ -15,12 +15,19 @@ public class Room {
     Room east;
     Room north;
     Room south;
+    String description;
     boolean locked;
 
     // initalize each room with the room to its left, right, up and down from current room, as well as if room is locked
-    public Room(int currentRoom) {
+    public Room(int currentRoom, String description) {
        this.currentRoom = currentRoom;
+       this.description = description;
         
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" + "Du er i rum" + currentRoom + ", description=" + description + '}';
     }
 
     public int getCurrentRoom() {

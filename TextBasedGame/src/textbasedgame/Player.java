@@ -12,7 +12,19 @@ package textbasedgame;
 public class Player {
     private String name;
     private int health;
-    private int location;
+    private Room location;
+    private int roomNr;
+
+    public int getRoomNr() {
+        return roomNr;
+    }
+
+    public void setRoomNr(int roomNr) {
+        this.roomNr = roomNr;
+    }
+
+    
+    
 
     public String getName() {
         return name;
@@ -31,11 +43,11 @@ public class Player {
     }
     
     
-    public void setLocation(int location){
+    public void setLocation(Room location){
         this.location = location;
     }
     
-    public int getLocation(){
+    public Room getLocation(){
         return location;
     }
 }

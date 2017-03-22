@@ -13,22 +13,24 @@ import java.util.Scanner;
  */
 public class GameController {
     
-    public void run(){
+    public void runGame(){
         Scanner userInput = new Scanner(System.in);
         // initalise room
-        Room r1 = new Room(1);
-        Room r2 = new Room(2);
-        Room r3 = new Room(3);
-        Room r4 = new Room(4);
-        Room r5 = new Room(5);
-        Room r6 = new Room(6);
-        Room r7 = new Room(7);
-        Room r8 = new Room(8);
-        Room r9 = new Room(9);
-        Room r10 = new Room(10);
+        Room[][] roomMatrix = new Room[3][3];
+        
+        roomMatrix[0][0] = new Room(1);
+        roomMatrix[0][1] = new Room(2);
+        roomMatrix[0][2] = new Room(3);
+        roomMatrix[1][0] = new Room(4);
+        roomMatrix[1][1] = new Room(5);
+        roomMatrix[1][2] = new Room(6);
+        roomMatrix[2][0] = new Room(7);
+        roomMatrix[2][1] = new Room(8);
+        roomMatrix[2][2] = new Room(9);
+        
         // initalise position for each room
-        r1.setNorth(r8);
-        r1.setEast(r2);
+        roomMatrix[0][0].setNorth(roomMatrix[2][2]);
+        roomMatrix[0][0].setEast(roomMatrix[0][1]);
         
         r2.setNorth(r3);
         r2.setWest(r1);
@@ -83,21 +85,30 @@ public class GameController {
             System.out.println("Where do you wanna go");
             
             
+            // Controls
             /*
-            while userAnswer is north
+            each up, down, left and right should be a while loop that gets turned on which pos. user want
+            userKey up for north, userkey down for south, userkey left for west, userkey right for east
+            */
+            
+            // update position subtract and add to x,y userPosition depending on where he want to go.
+            // ie Up for north add at 0,0 x,y add +1 to y
+            
+            /*
+            while userAnswer is north meaning userKey == to up
             */
             
             // 
             // check if there is a room north
-            // if there is update user position, to current north room.
+            // if there is update user position, to current north room by subtract and add to x,y userPosition depending on where he want to go.
             
             
             /*
-            while userAnswer is south
+            while userAnswer is south meaning userKey == down
             */
             // 
             // check if there is a room South
-            // if there is update user position, to current south room.
+            // if there is update user position, to current south room by subtract and add to x,y userPosition depending on where he want to go.
             
             /*
             while userAnswer is west

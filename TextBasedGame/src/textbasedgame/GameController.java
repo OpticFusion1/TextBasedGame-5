@@ -27,20 +27,19 @@ public class GameController {
         // initalise room
         Room[][] roomMatrix = new Room[3][3];
       
-        
-        roomMatrix[0][0] = new Room(1);
-      
-        roomMatrix[0][1] = new Room(2);
-        roomMatrix[0][2] = new Room(3);
-        roomMatrix[1][0] = new Room(4);
-        roomMatrix[1][1] = new Room(5);
-        roomMatrix[1][2] = new Room(6);
-        roomMatrix[2][0] = new Room(7);
-        roomMatrix[2][1] = new Room(8);
-        roomMatrix[2][2] = new Room(9);
-        
         // initalise position for each room
+        roomMatrix[0][0] = new Room(1, "textbeskrivelse");
+        roomMatrix[0][1] = new Room(2, "textbeskrivelse");
+        roomMatrix[0][2] = new Room(3, "textbeskrivelse");
+        roomMatrix[1][0] = new Room(4, "textbeskrivelse" );
+        roomMatrix[1][1] = new Room(5, "textbeskrivelse");
+        roomMatrix[1][2] = new Room(6, "textbeskrivelse");
+        roomMatrix[2][0] = new Room(7, "textbeskrivelse");
+        roomMatrix[2][1] = new Room(8, "textbeskrivelse");
+        roomMatrix[2][2] = new Room(9, "textbeskrivelse");
         
+        
+        // EXITS FOR EACH ROOM
         // DOOR 1
         roomMatrix[0][0].setNorth(roomMatrix[2][1]);
         roomMatrix[0][0].setEast(roomMatrix[0][1]);
@@ -77,7 +76,7 @@ public class GameController {
         
         // door 9
         roomMatrix[2][2].setEast(roomMatrix[2][0]);
-        // door west == victory;
+        // door west == victory ???;
         
         
         
@@ -85,17 +84,12 @@ public class GameController {
         // initialise new player
         Player n1 = new Player();
          boolean game = true;
-//        System.out.println("Welcome to TAG Game");
-//            System.out.println("What is your name");
-//            // asks name of user
-//            String name = userInput.nextLine();
-//            n1.setName(name);
-//            
-//        
+         
+        // initalise player position 
         n1.setLocation(roomMatrix[0][0]);
         n1.setRoomNr(n1.getLocation().getCurrentRoom());
-       System.out.println("You are in room "+n1.getRoomNr());
-        
+       
+        System.out.println("You are in room "+n1.getRoomNr());
         while(game) {
             
             boolean invalidInput = true;
@@ -109,7 +103,7 @@ public class GameController {
                 String brugerInput = userInput.nextLine();
                 String helpInput;
                 
-                 // if user types help
+                 // HELP MENU IF USER TYPES HELP
                 if(brugerInput.equalsIgnoreCase("help")) {
                     System.out.println("Help Menu");
                     System.out.println("tryk exit for exit");

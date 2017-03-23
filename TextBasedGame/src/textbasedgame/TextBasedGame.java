@@ -19,9 +19,8 @@ public class TextBasedGame {
         boolean game = true;
          
          g.intro();
-         while(game) {
-           g.runGame(); 
-         } 
+         g.runGame(); 
+    
         
        
         

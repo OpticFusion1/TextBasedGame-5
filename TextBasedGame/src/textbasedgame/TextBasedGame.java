@@ -14,10 +14,17 @@ public class TextBasedGame {
     public static void main(String[] args) {
         
      GameController g = new GameController();
-        
-        g.intro();
        
-        g.runGame();
+        
+        boolean game = true;
+         
+         g.intro();
+         while(game) {
+           g.runGame(); 
+         } 
+        
+       
+        
         
        
         

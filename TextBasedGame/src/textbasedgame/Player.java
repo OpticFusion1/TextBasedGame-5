@@ -14,6 +14,26 @@ public class Player {
     private int health;
     private Room location;
     private int roomNr;
+    private int playerGold;
+
+    public Player(String name, int health, Room location, int roomNr, int playerGold) {
+        this.name = name;
+        this.health = health;
+        this.location = location;
+        this.roomNr = roomNr;
+        this.playerGold = playerGold;
+    }
+
+    
+    public int getPlayerGold() {
+        return playerGold;
+    }
+
+    public void setPlayerGold(int playerGold) {
+        this.playerGold = playerGold;
+    }
+    
+    
 
     public int getRoomNr() {
         return roomNr;

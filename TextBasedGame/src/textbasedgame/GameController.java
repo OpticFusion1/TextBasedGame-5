@@ -12,12 +12,30 @@ import java.util.Scanner;
  *
  * @author Zack
  */
+
 public class GameController {
+    private boolean invalidInput = true;
+    String name;
+    String helpInput;
     
     public void intro() {
         System.out.println("Welcome to Text Based Adventure Game");
         
     }
+    
+  
+    
+     public void chooseDirection(){
+    
+        System.out.println("Where do you wanna go");
+        System.out.println("Press n for north");
+        System.out.println("Press s for south");
+        System.out.println("Press e for east");
+        System.out.println("Press w for west");
+    }
+     
+     
+   
    
     
     public void runGame(){
@@ -25,157 +43,130 @@ public class GameController {
         
         Scanner userInput = new Scanner(System.in);
         // initalise room
-        Room[][] roomMatrix = new Room[3][3];
+        Room[][] roomMatrix = new RoomFactory().createRooms();
       
-        // initalise position for each room
-        roomMatrix[0][0] = new Room(1, "textbeskrivelse");
-        roomMatrix[0][1] = new Room(2, "textbeskrivelse");
-        roomMatrix[0][2] = new Room(3, "textbeskrivelse");
-        roomMatrix[1][0] = new Room(4, "textbeskrivelse" );
-        roomMatrix[1][1] = new Room(5, "textbeskrivelse");
-        roomMatrix[1][2] = new Room(6, "textbeskrivelse");
-        roomMatrix[2][0] = new Room(7, "textbeskrivelse");
-        roomMatrix[2][1] = new Room(8, "textbeskrivelse");
-        roomMatrix[2][2] = new Room(9, "textbeskrivelse");
-        
-        
-        // EXITS FOR EACH ROOM
-        // DOOR 1
-        roomMatrix[0][0].setNorth(roomMatrix[2][1]);
-        roomMatrix[0][0].setEast(roomMatrix[0][1]);
-        
-        // DOOR 2
-        roomMatrix[0][1].setNorth(roomMatrix[0][2]);
-        roomMatrix[0][1].setWest(roomMatrix[0][0]);
-        
-        // DOOR 3
-        roomMatrix[0][2].setWest(roomMatrix[1][0]);
-        roomMatrix[0][2].setSouth(roomMatrix[0][1]);
-        
-        // door 4
-        roomMatrix[1][0].setEast(roomMatrix[0][2]);
-        roomMatrix[1][0].setWest(roomMatrix[1][1]);
-        
-        // door 5
-        roomMatrix[1][1].setSouth(roomMatrix[1][2]);
-        roomMatrix[1][1].setEast(roomMatrix[1][0]);
-        
-        // door 6
-        roomMatrix[1][2].setEast(roomMatrix[2][1]);
-        roomMatrix[1][2].setNorth(roomMatrix[1][1]);
-        roomMatrix[1][2].setSouth(roomMatrix[2][0]);
-        
-        
-        // door 7
-        roomMatrix[2][0].setNorth(roomMatrix[1][2]);
-        roomMatrix[2][0].setWest(roomMatrix[2][2]);
-        
-        // door 8
-        roomMatrix[2][1].setSouth(roomMatrix[0][0]);
-        roomMatrix[2][1].setWest(roomMatrix[1][2]);
-        
-        // door 9
-        roomMatrix[2][2].setEast(roomMatrix[2][0]);
-        // door west == victory ???;
-        
+       
         
         
         
         // initialise new player
-        Player n1 = new Player();
-         boolean game = true;
-         
-        // initalise player position 
-        n1.setLocation(roomMatrix[0][0]);
-        n1.setRoomNr(n1.getLocation().getCurrentRoom());
-       
+        Player n1 = new Player(name, 100, roomMatrix[0][0], 1, 0);
+        
         System.out.println("You are in room "+n1.getRoomNr());
+        boolean game = true;
         while(game) {
-            
-            boolean invalidInput = true;
+           if (n1.getRoomNr() == 9) {
+               System.out.println("You won");
+               System.out.println("You collected "+n1.getPlayerGold()+" gold coins");
+               invalidInput = false;
+               System.exit(0);
+           }
+            invalidInput = true;
             while(invalidInput){
+                if (n1.getHealth() < 1) {
+                    System.out.println("Game Over");
+                    System.exit(0);
+                }
+                // asks user for direction to go
+                chooseDirection();
                 
-                System.out.println("Where do you wanna go");
-                System.out.println("Press n for north");
-                System.out.println("Press s for south");
-                System.out.println("Press e for east");
-                System.out.println("Press w for west");
                 String brugerInput = userInput.nextLine();
-                String helpInput;
+                
                 
                  // HELP MENU IF USER TYPES HELP
                 if(brugerInput.equalsIgnoreCase("help")) {
-                    System.out.println("Help Menu");
-                    System.out.println("tryk exit for exit");
-                    Scanner scanHelp = new Scanner(System.in);
-                    helpInput = scanHelp.nextLine();
-                    if(helpInput.equalsIgnoreCase("exit")) {
-                      invalidInput = true; 
-                        System.out.println("You are in room "+n1.getRoomNr());
-                      
-                    }
-                    invalidInput = false;
+                    help(n1);
                 }
                 
-                
-                
-                // room North
+                   // ROOM NORTH
                 if (brugerInput.charAt(0) == 'n') {
                    if (n1.getLocation().getNorth() != null) {
-                       invalidInput = false;
-                       // sætter vores ny position for spilleren
-                       n1.setLocation(n1.getLocation().getNorth());
-                       n1.setRoomNr(n1.getLocation().getCurrentRoom());
-                       System.out.println("You are currently in room "+n1.getRoomNr());
-                       
+                       direction(n1, n1.getLocation().getNorth());
                    }
+                   // IF NO ROOM TO THAT DIRECTION
                    else {
                        System.out.println("No room north for room "+n1.getRoomNr());
                    }
                 }
                 
-                // room South
+                // ROOM SOUTH
                 if (brugerInput.charAt(0) == 's') {
                    if (n1.getLocation().getSouth() != null) {
-                       invalidInput = false;
-                       n1.setLocation(n1.getLocation().getSouth());
-                       n1.setRoomNr(n1.getLocation().getCurrentRoom());
-                       System.out.println("You are currently in room "+n1.getRoomNr());
+                       direction(n1, n1.getLocation().getSouth());
                    }
+                   // IF NO ROOM TO THAT DIRECTION
                    else {
                        System.out.println("No room south for room "+n1.getRoomNr());
                    }
                 }
                 
-                // room east
+                // ROOM EAST
                 if (brugerInput.charAt(0) == 'e') {
                    if (n1.getLocation().getEast() != null) {
-                       invalidInput = false;
-                       n1.setLocation(n1.getLocation().getEast());
-                       n1.setRoomNr(n1.getLocation().getCurrentRoom());
-                       System.out.println("You are currently in room "+n1.getRoomNr());
+                       direction(n1, n1.getLocation().getEast());
                    }
+                   
+                   // IF NO ROOM TO THAT DIRECTION
                    else {
                        System.out.println("No room east for room "+n1.getRoomNr());
                    }
                 }
-                // room west
+                // ROOM WEST
                 if (brugerInput.charAt(0) == 'w') {
                    if (n1.getLocation().getWest() != null) {
-                       invalidInput = false;
-                       n1.setLocation(n1.getLocation().getWest());
-                       n1.setRoomNr(n1.getLocation().getCurrentRoom());
-                       System.out.println("You are currently in room "+n1.getRoomNr());
-                   }
-                   // when location is null
+                     direction(n1, n1.getLocation().getWest());
+                     }
+                   // // IF NO ROOM TO THAT DIRECTION
                    else {
                        System.out.println("No room west for room "+n1.getRoomNr());
                    }
                 }
                 // if user types gold
                 // if user types quit
-                
             }
+         
         }
     }
+    
+    public void gameOver(){
+         System.out.println("Game over");
+    }
+
+    private void direction(Player n1, Room nextRoom) {
+        invalidInput = false;
+       
+        // sætter vores ny position for spilleren
+        n1.setLocation(nextRoom);
+
+        n1.setRoomNr(n1.getLocation().getCurrentRoom());
+       
+        
+        int gold = nextRoom.getGold();
+        int health = n1.getHealth();
+        n1.setPlayerGold(n1.getPlayerGold()+gold);
+        nextRoom.setGold(0);
+        
+        n1.setHealth(health-10);
+        
+        System.out.println("You are in room "+n1.getRoomNr());
+        System.out.println("You found "+gold+" gold coins"+" your total gold "+n1.getPlayerGold());
+        System.out.println("Your health is "+n1.getHealth());
+        
+    }
+    
+      public void help(Player n1){
+         System.out.println("Help Menu");
+        System.out.println("tryk exit for exit");
+        Scanner scanHelp = new Scanner(System.in);
+        helpInput = scanHelp.nextLine();
+        if (helpInput.equalsIgnoreCase("exit")) {
+            invalidInput = true;
+            System.out.println("You are in room " + n1.getRoomNr());
+
+        }
+        invalidInput = false;
+    }
+      
+      
+     
 }

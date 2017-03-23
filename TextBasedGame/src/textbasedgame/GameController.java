@@ -7,6 +7,7 @@ package textbasedgame;
 
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -14,13 +15,29 @@ import java.util.Scanner;
  */
 
 public class GameController {
+    // Our global variables
     private boolean invalidInput = true;
     String name;
     String helpInput;
+    boolean game = true;
     
     public void intro() {
-        System.out.println("Welcome to Text Based Adventure Game");
-        
+        System.out.println(
+                         ">> Welcome to Text Based Adventure Game! <<\n\n"
+                        + "The objective of this game is to find your way through\n" 
+                        + "the dungeon and collect as much gold as possible. \n\n"
+                        + "You don't have a map and only a flaslight at your \n"
+                        + "disposal to light up your quest.\n"
+                        + "At any time during your quest, type help and get some options\n"
+                        + "You forgot to eat so you have to finish your quest\n"
+                        + "before you faint and is eaten by moths and bats \n"
+                        + "and big ugly spiders and then eventually die,  \n"
+                        + "which in that case you have lost. \n"
+                        + "Your health is at 100% when you start and you will\n"
+                        + "gradually lose your health while your walking around.\n"
+                        + "because you are hungry and no food is available\n"
+                        + "You have won the game when you have found the Exit\n"
+                        + "and collected at least 20 goldpieces.\n\n\n\n");
     }
     
   
@@ -38,22 +55,21 @@ public class GameController {
    
    
     
-    public void runGame(){
+    public void runGame() throws InterruptedException {
         
         
         Scanner userInput = new Scanner(System.in);
         // initalise room
         Room[][] roomMatrix = new RoomFactory().createRooms();
       
-       
-        
-        
-        
-        // initialise new player
+       // initialise new player
         Player n1 = new Player(name, 100, roomMatrix[0][0], 1, 0);
         
-        System.out.println("You are in room "+n1.getRoomNr());
-        boolean game = true;
+        
+        
+        System.out.println("You have now entered the dungeon");
+        
+        
         while(game) {
            if (n1.getRoomNr() == 9) {
                System.out.println("You won");
@@ -64,9 +80,10 @@ public class GameController {
             invalidInput = true;
             while(invalidInput){
                 if (n1.getHealth() < 1) {
-                    System.out.println("Game Over");
+                    quit(n1);
                     System.exit(0);
                 }
+                Thread.sleep(200);
                 // asks user for direction to go
                 chooseDirection();
                 
@@ -76,6 +93,12 @@ public class GameController {
                  // HELP MENU IF USER TYPES HELP
                 if(brugerInput.equalsIgnoreCase("help")) {
                     help(n1);
+                }
+                
+                 // QUIT MENU IF USER TYPES HELP
+                if(brugerInput.equalsIgnoreCase("quit")) {
+                    quit(n1);
+                    System.exit(0);
                 }
                 
                    // ROOM NORTH
@@ -103,6 +126,7 @@ public class GameController {
                 // ROOM EAST
                 if (brugerInput.charAt(0) == 'e') {
                    if (n1.getLocation().getEast() != null) {
+                       Thread.sleep(200);
                        direction(n1, n1.getLocation().getEast());
                    }
                    
@@ -114,10 +138,12 @@ public class GameController {
                 // ROOM WEST
                 if (brugerInput.charAt(0) == 'w') {
                    if (n1.getLocation().getWest() != null) {
-                     direction(n1, n1.getLocation().getWest());
+                       Thread.sleep(200);
+                       direction(n1, n1.getLocation().getWest());
                      }
                    // // IF NO ROOM TO THAT DIRECTION
                    else {
+                       
                        System.out.println("No room west for room "+n1.getRoomNr());
                    }
                 }
@@ -149,12 +175,13 @@ public class GameController {
         n1.setHealth(health-10);
         
         System.out.println("You are in room "+n1.getRoomNr());
+        System.out.println(n1.getLocation().getDescription());
         System.out.println("You found "+gold+" gold coins"+" your total gold "+n1.getPlayerGold());
         System.out.println("Your health is "+n1.getHealth());
         
     }
     
-      public void help(Player n1){
+    public void help(Player n1){
          System.out.println("Help Menu");
         System.out.println("tryk exit for exit");
         Scanner scanHelp = new Scanner(System.in);
@@ -166,7 +193,13 @@ public class GameController {
         }
         invalidInput = false;
     }
-      
-      
+       
+    public void quit(Player n1){
+        System.out.println("The Game Finished ! ");
+        System.out.println("Your Stats: ");
+        System.out.println("You collected: "+n1.getPlayerGold()+" gold coins");
+    }
+    
+    
      
 }

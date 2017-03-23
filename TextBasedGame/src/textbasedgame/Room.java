@@ -15,8 +15,16 @@ public class Room {
     private Room east;
     private Room north;
     private Room south;
-    private final String description;
+    private String description;
     private int gold;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
     
     
@@ -32,9 +40,8 @@ public class Room {
 
     // initalize each room with the room to its left, right, up and down from current room, as well as if room is locked
     
-    public Room(int currentRoom, String description, int gold) {
+    public Room(int currentRoom, int gold) {
         this.currentRoom = currentRoom;
-        this.description = description;
         this.gold = gold;
       
     }
@@ -53,8 +60,6 @@ public class Room {
     }
     
     
-    // boolean check method whether there is room to its left, right, up and down
-  
     
     
     // call method to get the room of the player depending on where he wants to go

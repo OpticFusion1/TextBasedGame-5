@@ -11,17 +11,15 @@ public class TextBasedGame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         
      GameController g = new GameController();
        
         
-        boolean game = true;
+        
          
          g.intro();
-         g.runGame(); 
-    
-        
+         g.runGame();
        
         
         

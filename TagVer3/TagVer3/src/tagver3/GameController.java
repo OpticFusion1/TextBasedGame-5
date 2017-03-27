@@ -145,7 +145,7 @@ public class GameController {
 
     }
 
-    public void help() {
+    public void help()  {
         System.out.println("Help Menu");
         System.out.println("Type 'exit' to get back to game");
         System.out.println("Type 'gold' to see how much gold you've collected so far.");

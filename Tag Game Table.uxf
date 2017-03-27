@@ -317,9 +317,9 @@ bg=blue</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>250</x>
-      <y>630</y>
+      <y>610</y>
       <w>170</w>
-      <h>80</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Vundet
 bg=Green</panel_attributes>

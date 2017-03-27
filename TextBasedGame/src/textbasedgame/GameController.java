@@ -83,7 +83,7 @@ public class GameController {
                     quit(n1);
                     System.exit(0);
                 }
-                Thread.sleep(200);
+             
                 // asks user for direction to go
                 chooseDirection();
                 

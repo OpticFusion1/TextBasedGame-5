@@ -7,7 +7,7 @@ package tagver3;
 
 /**
  *
- * @author Ejer
+ * @author BenedikteEva
  */
 public class PrettyDollsFactory {
    

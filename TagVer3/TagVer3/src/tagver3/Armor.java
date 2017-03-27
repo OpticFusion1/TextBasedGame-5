@@ -9,7 +9,7 @@ package tagver3;
  *
  * @author Ticondrus
  */
-public class Armor {
+public class Armor implements Items{
 
     
     private int armor;
@@ -31,5 +31,20 @@ public class Armor {
     @Override
     public String toString() {
         return "Armor{" + "armor=" + armor + '}';
+    }
+
+    @Override
+    public void useItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void pickItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void throwItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

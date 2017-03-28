@@ -48,21 +48,22 @@ public class PrettyDolls implements Items   {
         this.name = name;
     }
 
-    
     @Override
-    public void useItem() {
+    public void fetch() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void pickItem() {
+    public void put() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void getItem() {
+    public void show() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+  
 
     
 

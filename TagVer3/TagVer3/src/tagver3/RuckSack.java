@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class RuckSack {
     
-    ArrayList<Items> rucksack = new ArrayList<Items>();
+    ArrayList<Items> rucksack = new ArrayList();
   
     public void ShowItemList() {
         

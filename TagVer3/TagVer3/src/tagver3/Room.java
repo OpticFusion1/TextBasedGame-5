@@ -28,9 +28,8 @@ public class Room {
     public void setWeapon(Armor weapon) {
         this.weapon = weapon;
     }
+ 
     
-    
-
     public PrettyDolls getPrettyDoll() {
         return prettyDoll;
     }

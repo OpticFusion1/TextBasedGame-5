@@ -10,9 +10,9 @@ public class GameController {
 
     private boolean invalidInput = true;
     Room[][] roomMatrix = new RoomFactory().createRooms();
-    String name;
     String helpInput;
     Boundery b = new Boundery();
+    String name = b.named;
     Player n1 = new Player(name, 100, roomMatrix[0][0], 1, 0);
     boolean gamerun;
 
@@ -24,93 +24,92 @@ public class GameController {
         String enterchoice = rumA.next();
 
         if (enterchoice.equals("1")) {
-            System.out.println( n1.getLocation());
+            System.out.println(n1.getLocation());
             gamerun = true;
-             }
+        }
 
-            while (gamerun) {
+        while (gamerun) {
 
-                boolean game;
-                Scanner userInput = new Scanner(System.in);
+            boolean game;
+            Scanner userInput = new Scanner(System.in);
 
-                // initalise room
-                game = true;
-                while (game) {
+            // initalise room
+            game = true;
+            while (game) {
 
-                    if (n1.getRoomNr() == 9) {
-                        System.out.println("You won");
-                        System.out.println("You collected " + n1.getPlayerGold() + " gold coins"+"\n"
-                    + "--------------------------------------------------------------------");
-                        restartGame();
-                    }
-
-                    invalidInput = true;
-                    while (invalidInput) {
-                        if (n1.getHealth() < 1) {
-
-                            System.out.println("You Died. Game Over");
-                            restartGame();
-
-                        }
-                        // asks user for direction to go (this was a stupid remark since it actually says so in the name)
-
-                        b.chooseDirection();
-
-                        String brugerInput = userInput.nextLine();
-                        if (brugerInput.equalsIgnoreCase("help")) {
-                            help();
-                        }
-
-                        // ROOM NORTH
-                        if (brugerInput.charAt(0) == 'n') {
-                            if (n1.getLocation().getNorth() != null) {
-                                direction(n1, n1.getLocation().getNorth());
-                            } // IF NO ROOM TO THAT DIRECTION
-                            else {
-                                System.out.println("No room north for room " + n1.getRoomNr()+"\n"
-                    + "--------------------------------------------------------------------");
-                            }
-                        }
-
-                        // ROOM SOUTH
-                        if (brugerInput.charAt(0) == 's') {
-                            if (n1.getLocation().getSouth() != null) {
-                                direction(n1, n1.getLocation().getSouth());
-                            } // IF NO ROOM TO THAT DIRECTION
-                            else {
-                                System.out.println("No room south for room " + n1.getRoomNr()+"\n"
-                    + "--------------------------------------------------------------------");
-                            }
-                        }
-
-                        // ROOM EAST
-                        if (brugerInput.charAt(0) == 'e') {
-                            if (n1.getLocation().getEast() != null) {
-                                direction(n1, n1.getLocation().getEast());
-                            } // IF NO ROOM TO THAT DIRECTION
-                            else {
-                                System.out.println("No room east for room " + n1.getRoomNr()+"\n"
-                    + "--------------------------------------------------------------------");
-                            }
-                        }
-
-                        // ROOM WEST
-                        if (brugerInput.charAt(0) == 'w') {
-                            if (n1.getLocation().getWest() != null) {
-                                direction(n1, n1.getLocation().getWest());
-                            } // // IF NO ROOM TO THAT DIRECTION
-                            else {
-                                System.out.println("No room west for room " + n1.getRoomNr()+"\n"
-                    + "--------------------------------------------------------------------");
-                            }
-                        }
-
-                    }
+                if (n1.getRoomNr() == 9) {
+                    System.out.println("You won");
+                    System.out.println("You collected " + n1.getPlayerGold() + " gold coins" + "\n"
+                            + "--------------------------------------------------------------------");
+                    restartGame();
                 }
 
+                invalidInput = true;
+                while (invalidInput) {
+                    if (n1.getHealth() < 1) {
+
+                        System.out.println("You Died. Game Over");
+                        restartGame();
+
+                    }
+                    // asks user for direction to go (this was a stupid remark since it actually says so in the name)
+
+                    b.chooseDirection();
+
+                    String brugerInput = userInput.nextLine();
+                    if (brugerInput.equalsIgnoreCase("help")) {
+                        help();
+                    }
+
+                    // ROOM NORTH
+                    if (brugerInput.charAt(0) == 'n') {
+                        if (n1.getLocation().getNorth() != null) {
+                            direction(n1, n1.getLocation().getNorth());
+                        } // IF NO ROOM TO THAT DIRECTION
+                        else {
+                            System.out.println("No room north for room " + n1.getRoomNr() + "\n"
+                                    + "--------------------------------------------------------------------");
+                        }
+                    }
+
+                    // ROOM SOUTH
+                    if (brugerInput.charAt(0) == 's') {
+                        if (n1.getLocation().getSouth() != null) {
+                            direction(n1, n1.getLocation().getSouth());
+                        } // IF NO ROOM TO THAT DIRECTION
+                        else {
+                            System.out.println("No room south for room " + n1.getRoomNr() + "\n"
+                                    + "--------------------------------------------------------------------");
+                        }
+                    }
+
+                    // ROOM EAST
+                    if (brugerInput.charAt(0) == 'e') {
+                        if (n1.getLocation().getEast() != null) {
+                            direction(n1, n1.getLocation().getEast());
+                        } // IF NO ROOM TO THAT DIRECTION
+                        else {
+                            System.out.println("No room east for room " + n1.getRoomNr() + "\n"
+                                    + "--------------------------------------------------------------------");
+                        }
+                    }
+
+                    // ROOM WEST
+                    if (brugerInput.charAt(0) == 'w') {
+                        if (n1.getLocation().getWest() != null) {
+                            direction(n1, n1.getLocation().getWest());
+                        } // // IF NO ROOM TO THAT DIRECTION
+                        else {
+                            System.out.println("No room west for room " + n1.getRoomNr() + "\n"
+                                    + "--------------------------------------------------------------------");
+                        }
+                    }
+
+                }
             }
 
-       
+        }
+
         // after the into player was asked if he was a coward or not this is if he was a coward and ends the game. 
         if (enterchoice.equals("0")) {
             gameOver();
@@ -145,12 +144,8 @@ public class GameController {
 
     }
 
-    public void help()  {
-        System.out.println("Help Menu");
-        System.out.println("Type 'exit' to get back to game");
-        System.out.println("Type 'gold' to see how much gold you've collected so far.");
-        System.out.println("Type 'health' to see your current health status");
-        System.out.println("Type 'quit' to end the game.");
+    public void help() {
+        b.helpMenu();
         Scanner scanHelp = new Scanner(System.in);
         helpInput = scanHelp.nextLine();
         if (helpInput.equalsIgnoreCase("exit")) {
@@ -189,7 +184,7 @@ public class GameController {
             Class<? extends Room[][]> aClass;
             aClass = roomMatrix.getClass();
             n1.setRoomNr(1);
-            System.out.println(n1.getRoomNr() + "  " + n1.getLocation()+"\n"
+            System.out.println(n1.getRoomNr() + "  " + n1.getLocation() + "\n"
                     + "--------------------------------------------------------------------");
             gamerun = true;
 
@@ -201,7 +196,8 @@ public class GameController {
     }
 
     public void gameOver() {
-        System.out.println("Game Over");
+
+        System.out.println("Bye  " + name + "  Game Over");
 
     }
 

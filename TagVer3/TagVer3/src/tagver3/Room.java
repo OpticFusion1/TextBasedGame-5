@@ -18,7 +18,10 @@ public class Room {
     private Room south;
     private final String description;
     private int gold;
+   
 
+  
+    
     public int getGold() {
         return gold;
     }
@@ -28,7 +31,7 @@ public class Room {
     }
 
     // initalize each room with the room to its left, right, up and down from current room, as well as if room is locked
-    public Room(int currentRoom, String description, int gold) {
+    public Room(int currentRoom, String description, int gold ) {
         this.currentRoom = currentRoom;
         this.description = description;
         this.gold = gold;

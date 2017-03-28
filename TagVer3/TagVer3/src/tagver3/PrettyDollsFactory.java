@@ -9,10 +9,12 @@ package tagver3;
  *
  * @author BenedikteEva
  */
-public class PrettyDollsFactory {
+public class PrettyDollsFactory implements Items {
+    
    
      public PrettyDolls[] createDolls (){
-         PrettyDolls doll[] = new PrettyDolls[5];
+         
+         PrettyDolls doll[] = new PrettyDolls[6];
     
          doll[0]=new PrettyDolls("Wanda", "You look at a doll with beautiful"
                  + " saphires as eyes. You pause for a moment and take a deep breath", 3);
@@ -31,8 +33,26 @@ public class PrettyDollsFactory {
          doll[4]= new PrettyDolls("Potsy", "Not exactly pretty, but with his roundness, bulging eyes "
                  + " and big smile, he makes you laugh, which was exactly what you needed to make your day",7);
          
+         doll[5]=new PrettyDolls("","",0);
+         
       return doll;
      }         
+
+  
+    @Override
+    public void useItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void pickItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void getItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      
 }
 

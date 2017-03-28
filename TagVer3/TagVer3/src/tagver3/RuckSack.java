@@ -5,39 +5,17 @@
  */
 package tagver3;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author Ticondrus
+ * @author Ejer
  */
-public class Armor implements Items {
-
-    public Armor(int armor, String descriptionarmor, String armorname) {
-        this.armor = armor;
-        this.descriptionarmor = descriptionarmor;
-        this.armorname = armorname;
-    }
-
-    private int armor;
+public class RuckSack implements Items {
     
-    String descriptionarmor;
-    String armorname;
-
+    //ArrayList <> rucksack = new ArrayList<>();
     
-    public int getArmor() {
-        return armor;
-    }
-
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
-
-    public String getArmorname() {
-        return armorname;
-    }
-
-    public void setArmorname(String armorname) {
-        this.armorname = armorname;
-    }
+    
 
     @Override
     public void useItem() {
@@ -53,13 +31,7 @@ public class Armor implements Items {
     public void getItem() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
     
-
     
-
-
-
     
-
 }

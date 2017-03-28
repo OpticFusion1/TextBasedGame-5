@@ -15,6 +15,7 @@ public class RoomFactory {
 
         // initalise room
         Room[][] roomMatrix = new Room[3][3];
+       
 
         // initalise position for each room
         roomMatrix[0][0] = new Room(1, "\n"

@@ -11,6 +11,14 @@ package tagver3;
  */
 public class Armor implements Items {
 
+    public String getDescriptionarmor() {
+        return descriptionarmor;
+    }
+
+    public void setDescriptionarmor(String descriptionarmor) {
+        this.descriptionarmor = descriptionarmor;
+    }
+
     public Armor(int armor, String descriptionarmor, String armorname) {
         this.armor = armor;
         this.descriptionarmor = descriptionarmor;
@@ -52,7 +60,7 @@ public class Armor implements Items {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+
     public Armor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -62,30 +70,23 @@ public class Armor implements Items {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+
     public void throwItem() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-}
+
 
 @Override
         public String toString() {
         return "Armor{" + "armor=" + armor + '}';
     }
 
+
     @Override
-        public void useItem() {
+    public void getItem() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-        public void pickItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-        public void throwItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

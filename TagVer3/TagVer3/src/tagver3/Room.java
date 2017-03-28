@@ -18,6 +18,27 @@ public class Room {
     private Room south;
     private final String description;
     private int gold;
+    private PrettyDolls prettyDoll;
+    private Armor weapon;
+
+    public Armor getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Armor weapon) {
+        this.weapon = weapon;
+    }
+    
+    
+
+    public PrettyDolls getPrettyDoll() {
+        return prettyDoll;
+    }
+
+    public void setPrettyDoll(PrettyDolls prettyDoll) {
+        this.prettyDoll = prettyDoll;
+    }
+    
    
 
   

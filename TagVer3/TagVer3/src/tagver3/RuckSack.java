@@ -7,31 +7,26 @@ package tagver3;
 
 import java.util.ArrayList;
 
+
+
 /**
  *
  * @author Ejer
  */
-public class RuckSack implements Items {
+public class RuckSack {
     
-    //ArrayList <> rucksack = new ArrayList<>();
+    ArrayList<Items> rucksack = new ArrayList<Items>();
+  
+    public void ShowItemList() {
+        
+        System.out.print(rucksack);
+        
+    }
+  
     
     
 
-    @Override
-    public void useItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void pickItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void getItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+  
     
     
 }

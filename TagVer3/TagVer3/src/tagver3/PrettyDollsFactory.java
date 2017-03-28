@@ -39,19 +39,21 @@ public class PrettyDollsFactory implements Items {
      }         
 
   
+   
+
     @Override
-    public void useItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void fetch() {
+       // henter item fra rygsæk
     }
 
     @Override
-    public void pickItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void put() {
+        //føj til rygsæk
     }
 
     @Override
-    public void getItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void show() {
+    // vis navn og beskrivelse
     }
      
 }

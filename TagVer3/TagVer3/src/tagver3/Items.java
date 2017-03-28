@@ -1,7 +1,7 @@
 
 package tagver3;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -13,8 +13,8 @@ public interface Items {
 
   
     
-    public void useItem();
-    public void  pickItem();
-    public void getItem();
+    public void fetch();
+    public void  put();
+    public void show();
     
 }

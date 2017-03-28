@@ -21,5 +21,8 @@ public class ArmorFactory {
         return Definearmor;
 
     }
+    public void show (){
+       
+    } 
 
 }

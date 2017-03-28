@@ -8,8 +8,7 @@ import java.util.Scanner;
  */
 public class Boundery {
 
-   
-
+  
     String named;
 
     public void intro() {
